@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatório Fotográfico</title>
+    <link rel="stylesheet" href="app.css/app.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📷 RELATÓRIO FOTOGRÁFICO</h1>
+            <p>MONTE AQUI SEU RELATORIO FOTOGRAFICO !</p>
+        </header>
+
+        <section class="form-section">
+            <div class="info-section">
+                <div class="info-group">
+                    <label for="location">📍 LOCAL DENOMINADO</label>
+                    <input type="text" id="location" placeholder="Ex: Rua X, nº 123, Bairro...">
+                </div>
+                <div class="info-group">
+                    <label for="date">📅 DATA</label>
+                    <input type="date" id="date">
+                </div>
+                <div class="info-group">
+                    <label for="code">🔢 MGI/GERAT</label>
+                    <input type="text" id="code" placeholder="Ex: MGI-00123">
+                </div>
+            </div>
+
+            <div class="photos-grid">
+                <div class="photos-grid">
+                <div class="photo-item" data-index="1">
+                    <button class="remove-image" onclick="removeImage(1)">×</button>
+                    <h3>IMAGEM 1</h3>
+                    <div class="upload-area" onclick="triggerFileInput(1)">
+                        <img class="preview-image" id="preview-1" alt="Preview 1">
+                        <div class="upload-text" id="upload-text-1">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-1" placeholder="DESCRIÇÃO - 1"></textarea>
+                    <input type="file" class="file-input" id="file-1" accept="image/*" onchange="handleFileSelect(1)">
+                </div>
+
+                <div class="photo-item" data-index="2">
+                    <button class="remove-image" onclick="removeImage(2)">×</button>
+                    <h3>IMAGEM 2</h3>
+                    <div class="upload-area" onclick="triggerFileInput(2)">
+                        <img class="preview-image" id="preview-2" alt="Preview 2">
+                        <div class="upload-text" id="upload-text-2">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-2" placeholder="DESCRIÇÃO - 2"></textarea>
+                    <input type="file" class="file-input" id="file-2" accept="image/*" onchange="handleFileSelect(2)">
+                </div>
+
+                <div class="photo-item" data-index="3">
+                    <button class="remove-image" onclick="removeImage(3)">×</button>
+                    <h3>IMAGEM 3</h3>
+                    <div class="upload-area" onclick="triggerFileInput(3)">
+                        <img class="preview-image" id="preview-3" alt="Preview 3">
+                        <div class="upload-text" id="upload-text-3">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-3" placeholder="DESCRIÇÃO - 3"></textarea>
+                    <input type="file" class="file-input" id="file-3" accept="image/*" onchange="handleFileSelect(3)">
+                </div>
+
+                <div class="photo-item" data-index="4">
+                    <button class="remove-image" onclick="removeImage(4)">×</button>
+                    <h3>IMAGEM 4</h3>
+                    <div class="upload-area" onclick="triggerFileInput(4)">
+                        <img class="preview-image" id="preview-4" alt="Preview 4">
+                        <div class="upload-text" id="upload-text-4">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-4" placeholder="DESCRIÇÃO - 4"></textarea>
+                    <input type="file" class="file-input" id="file-4" accept="image/*" onchange="handleFileSelect(4)">
+                </div>
+
+                <div class="photo-item" data-index="5">
+                    <button class="remove-image" onclick="removeImage(5)">×</button>
+                    <h3>IMAGEM 5</h3>
+                    <div class="upload-area" onclick="triggerFileInput(5)">
+                        <img class="preview-image" id="preview-5" alt="Preview 5">
+                        <div class="upload-text" id="upload-text-5">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-5" placeholder="DESCRIÇÃO - 5"></textarea>
+                    <input type="file" class="file-input" id="file-5" accept="image/*" onchange="handleFileSelect(5)">
+                </div>
+
+                <div class="photo-item" data-index="6">
+                    <button class="remove-image" onclick="removeImage(6)">×</button>
+                    <h3>IMAGEM 6</h3>
+                    <div class="upload-area" onclick="triggerFileInput(6)">
+                        <img class="preview-image" id="preview-6" alt="Preview 6">
+                        <div class="upload-text" id="upload-text-6">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-6" placeholder="DESCRIÇÃO - 6"></textarea>
+                    <input type="file" class="file-input" id="file-6" accept="image/*" onchange="handleFileSelect(6)">
+                </div>
+
+                <div class="photo-item" data-index="7">
+                    <button class="remove-image" onclick="removeImage(7)">×</button>
+                    <h3>IMAGEM 7</h3>
+                    <div class="upload-area" onclick="triggerFileInput(7)">
+                        <img class="preview-image" id="preview-7" alt="Preview 7">
+                        <div class="upload-text" id="upload-text-7">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-7" placeholder="DESCRIÇÃO - 7"></textarea>
+                    <input type="file" class="file-input" id="file-7" accept="image/*" onchange="handleFileSelect(7)">
+                </div>
+
+                <div class="photo-item" data-index="8">
+                    <button class="remove-image" onclick="removeImage(8)">×</button>
+                    <h3>IMAGEM 8</h3>
+                    <div class="upload-area" onclick="triggerFileInput(8)">
+                        <img class="preview-image" id="preview-8" alt="Preview 8">
+                        <div class="upload-text" id="upload-text-8">
+                            Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-8" placeholder="DESCRIÇÃO - 8"></textarea>
+                    <input type="file" class="file-input" id="file-8" accept="image/*" onchange="handleFileSelect(8)">
+                </div>
+
+                <div class="photo-item" data-index="9">
+                    <button class="remove-image" onclick="removeImage(9)">×</button>
+                    <h3>IMAGEM 9</h3>
+                    <div class="upload-area" onclick="triggerFileInput(9)">
+                        <img class="preview-image" id="preview-9" alt="Preview 9">
+                        <div class="upload-text" id="upload-text-9">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-9" placeholder="DESCRIÇÃO - 9"></textarea>
+                    <input type="file" class="file-input" id="file-9" accept="image/*" onchange="handleFileSelect(9)">
+                </div>
+
+                <div class="photo-item" data-index="10">
+                    <button class="remove-image" onclick="removeImage(10)">×</button>
+                    <h3>IMAGEM 10</h3>
+                    <div class="upload-area" onclick="triggerFileInput(10)">
+                        <img class="preview-image" id="preview-10" alt="Preview 10">
+                        <div class="upload-text" id="upload-text-10">
+                             Clique para anexar foto
+                        </div>
+                    </div>
+                    <textarea class="description-input" id="desc-10" placeholder="DESCRIÇÃO - 10"></textarea>
+                    <input type="file" class="file-input" id="file-10" accept="image/*" onchange="handleFileSelect(10)">
+                </div>
+            </div>
+            </div>
+             <center> 
+            <button class="generate-btn" onclick="generatePDF()">
+              <i class="fas fa-file-pdf"></i> GERAR RELATORIO
+            </button>
+            </center> 
+        </section>
+    </div>
+    <script src="java/estrutura.js"></script>
+</body>
+</html>
+
+              
